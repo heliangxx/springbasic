@@ -2,6 +2,8 @@ package com.pactera.common.database;
 
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
@@ -38,14 +40,20 @@ public class JpaRepositoryDefaultConfig {
 	private DynamicDataSource dynamicDataSource;
 	@Autowired
 	HibernateProperties hibernateProperties;
-	
+
 	@Bean(name = "entityManagerPrimary")
+	@Primary
+	public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
+		return entityManagerFactory(builder).getObject().createEntityManager();
+	}
+
+	@Bean(name = "entityManagerFactory")
+
 	@Primary
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
 		Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(),
 				new HibernateSettings());
-		return builder.dataSource(dynamicDataSource).properties(properties)
-				.packages("com.pactera").build();
+		return builder.dataSource(dynamicDataSource).properties(properties).packages("com.pactera").build();
 	}
 
 	@Bean(name = "transactionManagerPrimary")
