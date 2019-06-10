@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration-status: 这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--Configuration-monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<Configuration status="WARN" monitorInterval="30">
+    <!--变量定义 -->
+    <properties>
+        <Property name="baseDir">app-logs/</Property>
+        <!-- <Property name="baseDir">E:/</Property> -->
+        <property name="all_file_name">all.log</property>
+        <property name="info_file_name">info.log</property>
+        <property name="error_file_name">error.log</property>
+        <property name="warn_file_name">warn.log</property>
+        <property name="test_file_name">test.log</property>
+        <property name="file_pattern_dir">/$${date:yyyy-MM}/</property>
+        <property name="file_pattern_name">%d{yyyy-MM-dd}-%i.log.gz</property>
+        <property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n</property>
+        <property name="cut_log_size">50MB</property> 
+    </properties>
+    
+	<!--定义所有的Appenders-->
+	<Appenders>
+		<!--这个输出控制台的配置 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="INFO" onMatch="ACCEPT"	onMismatch="DENY" />
+			<!--输出日志的格式-->
+			<PatternLayout pattern="${log_pattern}" />
+		</Console>
+		
+		<!--[打印所有日志] 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingFile name="allFile" fileName="${baseDir}${all_file_name}" filePattern="${baseDir}${file_pattern_dir}all-${file_pattern_name}">
+			<PatternLayout pattern="${log_pattern}" />
+			<SizeBasedTriggeringPolicy size="${cut_log_size}" />
+		</RollingFile>
+		
+		<!--[打印INFO日志] 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingFile name="infoFile" fileName="${baseDir}${info_file_name}" filePattern="${baseDir}${file_pattern_dir}info-${file_pattern_name}">
+		  	<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			<PatternLayout pattern="${log_pattern}" />
+			<SizeBasedTriggeringPolicy size="${cut_log_size}" />
+		</RollingFile>
+		
+		<!--[打印警告日志] 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingFile name="warnFile" fileName="${baseDir}${warn_file_name}" filePattern="${baseDir}${file_pattern_dir}warn-${file_pattern_name}">
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log_pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="${cut_log_size}"/>
+            </Policies>
+        	<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+		
+		<!--[打印错误日志] 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingFile name="errorFile" fileName="${baseDir}${error_file_name}" filePattern="${baseDir}${file_pattern_dir}error-${file_pattern_name}">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${log_pattern}" />
+			<SizeBasedTriggeringPolicy size="${cut_log_size}" />
+		</RollingFile>
+	</Appenders>
+
+  	<!--然后定义Loggers，只有定义了Loggers并引入的appender，appender才会生效-->
+	<Loggers>
+	  	<!--过滤掉Spring的一些无用的DEBUG信息-->
+        <Logger name="org.springframework" level="INFO"></Logger>
+		<Root level="ALL">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="infoFile" />
+			<AppenderRef ref="errorFile" />
+<!-- 			<AppenderRef ref="warnFile" /> -->
+		</Root>
+	</Loggers>
+</Configuration>
