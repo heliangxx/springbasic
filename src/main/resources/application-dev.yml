@@ -40,6 +40,19 @@ spring:
                     config:
                         multi-statement-allow: true
             use-global-data-source-stat: true
-            
-            
+    jpa:
+        show-sql: true
+        generate-ddl: true
+        hibernate:
+            ddl-auto: true
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         
+            
+slave:
+    datasource:
+        names:  ds1
+        type:  com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/pactera2?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: 1234567
