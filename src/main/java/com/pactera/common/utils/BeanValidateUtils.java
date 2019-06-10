@@ -26,7 +26,7 @@ public class BeanValidateUtils {
 	 * 创建人：lee
 	 * 创建时间：2016年11月22日 下午9:54:02
 	 */
-	public static boolean isEmpty(Collection collection){
+	public static boolean isEmpty(Collection<Object> collection){
 		if(collection!=null && collection.size() > 0){
 			return false;
 		}else{
@@ -41,7 +41,7 @@ public class BeanValidateUtils {
 	 * 创建人：lee
 	 * 创建时间：2016年11月22日 下午9:54:42
 	 */
-	public static boolean isNotEmpty(Collection collection){
+	public static boolean isNotEmpty(Collection<Object> collection){
 		if(!isEmpty(collection)){
 			return true;
 		}else{
@@ -55,7 +55,7 @@ public class BeanValidateUtils {
 	 * 创建人：lee
 	 * 创建时间：2016年11月22日 下午9:55:21
 	 */
-	public static boolean isEmpty(Map map){
+	public static boolean isEmpty(Map<String,Object> map){
 		if(map!=null && map.size() > 0){
 			return false;
 		}else{
@@ -69,7 +69,7 @@ public class BeanValidateUtils {
 	 * 创建人：lee
 	 * 创建时间：2016年11月22日 下午9:56:00
 	 */
-	public static boolean isNotEmpty(Map map){
+	public static boolean isNotEmpty(Map<String,Object> map){
 		if(!isEmpty(map)){
 			return true;
 		}else{

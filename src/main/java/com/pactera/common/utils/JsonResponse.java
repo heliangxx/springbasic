@@ -94,7 +94,7 @@ public class JsonResponse extends HashMap<String, Object> {
 	 * @author pactera
 	 * @date 2018年12月22日 上午11:56:27
 	 */
-	public static JsonResponse successPageData(Page page) {
+	public static JsonResponse successPageData(Page<Object> page) {
 		JsonResponse jsonResponse = new JsonResponse();
 		jsonResponse.put("status", 0);
 		jsonResponse.put("message", "成功");

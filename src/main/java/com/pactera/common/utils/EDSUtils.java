@@ -17,7 +17,7 @@ import javax.crypto.spec.DESKeySpec;
 
 /**
  * @ClassName：EDSUtils
- * @Description：TODO(这里用一句话描述这个类的作用) 
+ * @Description：EDSUtils
  * @author pactera 
  * @date 2019年5月12日 下午8:38:52 
  * @version 1.0.0 
@@ -32,7 +32,7 @@ public class EDSUtils {
       /**
        * 加密
        * @Title: encryptBasedDes 
-       * @Description: TODO(这里用一句话描述这个方法的作用)
+       * @Description: encryptBasedDes
        * @param data
        * @return String
        * @author pactera
@@ -60,7 +60,7 @@ public class EDSUtils {
       /**
        * 解密
        * @Title: decryptBasedDes 
-       * @Description: TODO(这里用一句话描述这个方法的作用)
+       * @Description: decryptBasedDes
        * @param cryptData
        * @return String
        * @author pactera
