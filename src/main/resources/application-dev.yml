@@ -6,7 +6,7 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         url: jdbc:mysql://localhost:3306/pactera?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
         username: root
-        password: 1234567
+        password: 123456
         druid:
             url: jdbc:mysql://localhost:3306/pactera?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
             username: root
@@ -37,11 +37,16 @@ spring:
                     config:
                         multi-statement-allow: true
             use-global-data-source-stat: true
-
+    jpa:
+        database: mysql
+        show-sql: true
+        hibernate:
+            ddl-auto: true
 slave:
     datasource:
         names:  ds1
-        type:  com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/pactera2?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
-        username: root
-        password: 1234567
+        ds1:
+            type:  com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:mysql://localhost:3306/pactera2?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+            username: root
+            password: 123456
