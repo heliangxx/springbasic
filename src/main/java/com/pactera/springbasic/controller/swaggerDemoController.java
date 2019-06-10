@@ -22,7 +22,7 @@ public class swaggerDemoController extends BaseController {
     public JsonResp swggerDemo() {
         Supplier<String> businessHandler = () -> {
             return "Hello swagger";
-        };
+        };∏
         return handleRequest(businessHandler);
     }
 }
