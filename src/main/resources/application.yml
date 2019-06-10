@@ -30,4 +30,3 @@ spring:
     mode: html
     encoding: UTF-8
     cache: false
- 
