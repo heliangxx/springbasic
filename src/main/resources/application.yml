@@ -1,0 +1,27 @@
+server:
+  port: 8011
+  tomcat:
+          uri-encoding: UTF-8
+          max-threads: 1000
+          min-spare-threads: 30
+  connection-timeout: 5000
+
+spring:
+  # 环境
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+ 
