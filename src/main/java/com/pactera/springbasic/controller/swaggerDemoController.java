@@ -58,8 +58,7 @@ public class swaggerDemoController extends BaseController {
             try {
                 return menuService.findAllBySql();
             } catch (Exception e) {
-                e.printStackTrace();
-                return null;
+              throwException(e);
             }
         };
         return handleRequest(businessHandler);
@@ -72,8 +71,7 @@ public class swaggerDemoController extends BaseController {
             try {
                 return menuService.findDs1AllBySql();
             } catch (Exception e) {
-                e.printStackTrace();
-                return null;
+                throwException(e);
             }
         };
         return handleRequest(businessHandler); 
