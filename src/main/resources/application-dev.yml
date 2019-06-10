@@ -37,15 +37,7 @@ spring:
                     config:
                         multi-statement-allow: true
             use-global-data-source-stat: true
-    jpa:
-        show-sql: true
-        generate-ddl: true
-        hibernate:
-            ddl-auto: true
-            naming:
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        
-            
+
 slave:
     datasource:
         names:  ds1
