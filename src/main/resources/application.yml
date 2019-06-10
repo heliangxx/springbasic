@@ -30,3 +30,8 @@ spring:
     mode: html
     encoding: UTF-8
     cache: false
+swagger:
+    enable: true
+    title:  springboot2 基础系统
+    desc:   springboot2 基础系统
+    url:
