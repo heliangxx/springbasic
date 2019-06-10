@@ -48,7 +48,6 @@ public class JpaRepositoryDefaultConfig {
 	}
 
 	@Bean(name = "entityManagerFactory")
-
 	@Primary
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
 		Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(),
