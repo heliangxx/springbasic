@@ -51,12 +51,12 @@ public class Swagger2Config {
     }
 
     private ApiInfo apiInfo() {
-        try {
-            title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
-            desc = new String(desc.getBytes("ISO-8859-1"), "UTF-8");
-            url = new String(url.getBytes("ISO-8859-1"), "UTF-8");
-        } catch (Exception e) {
-        }
+        // try {
+        //     title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
+        //     desc = new String(desc.getBytes("ISO-8859-1"), "UTF-8");
+        //     url = new String(url.getBytes("ISO-8859-1"), "UTF-8");
+        // } catch (Exception e) {
+        // }
         return new ApiInfoBuilder().title(title).description(desc).termsOfServiceUrl(url).version(VERSION).build();
     }
 }
