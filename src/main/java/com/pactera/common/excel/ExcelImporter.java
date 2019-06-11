@@ -154,6 +154,7 @@ public class ExcelImporter {
 		if (cell == null) {
 			return null;
 		}
+
 		cell.setCellType(CellType.STRING);
 		return cell.getStringCellValue().trim();
 	}
