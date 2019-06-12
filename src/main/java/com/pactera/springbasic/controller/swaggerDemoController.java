@@ -60,6 +60,7 @@ public class swaggerDemoController extends BaseController {
             } catch (Exception e) {
               throwException(e);
             }
+            return null;
         };
         return handleRequest(businessHandler);
     }
@@ -73,6 +74,7 @@ public class swaggerDemoController extends BaseController {
             } catch (Exception e) {
                 throwException(e);
             }
+            return null;
         };
         return handleRequest(businessHandler); 
     }
