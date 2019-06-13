@@ -22,6 +22,8 @@
 		<druid-version>1.1.17</druid-version>
 		<httpclient.version>4.5.8</httpclient.version>
 		<poi.version>4.1.0</poi.version>
+		<jwt.version>3.81</jwt.version>
+		<shiro.version>1.4.1</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -130,6 +132,39 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
         </dependency>
+		<!-- jwt -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${jwt.version}</version>
+		</dependency>
+		 <!-- shiro begin -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.theborakompanioni</groupId>
+			<artifactId>thymeleaf-extras-shiro</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<!-- shiro end -->
 	</dependencies>
 
 	<build>
