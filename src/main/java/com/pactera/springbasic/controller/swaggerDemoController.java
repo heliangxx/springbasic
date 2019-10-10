@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pactera.springbasic.Entity.SysMenu;
 import com.pactera.springbasic.service.SysMenuSerivce;
 import com.pactera.web.BaseController;
@@ -41,6 +42,7 @@ public class swaggerDemoController extends BaseController {
         };
         return handleRequest(businessHandler);
     }
+
     @ApiOperation(value = "获取默认数据源数据MybatisPlus", notes = "获取默认数据源数据MybatisPlus")
     @RequestMapping(value = "/firstSysMenuMybatis", method = RequestMethod.GET)
     public JsonResp defaultDsMyBatisTest() {
@@ -49,6 +51,7 @@ public class swaggerDemoController extends BaseController {
         };
         return handleRequest(businessHandler);
     }
+
     @ApiOperation(value = "获取数据源ds1数据", notes = "获取数据源ds1数据")
     @RequestMapping(value = "/ds1SysMenu", method = RequestMethod.GET)
     public JsonResp ds1DsTest() {
@@ -57,6 +60,7 @@ public class swaggerDemoController extends BaseController {
         };
         return handleRequest(businessHandler);
     }
+
     @ApiOperation(value = "获取数据源ds1数据Mysbatis", notes = "获取数据源ds1数据Mybatis")
     @RequestMapping(value = "/ds1SysMenuMybatis", method = RequestMethod.GET)
     public JsonResp ds1DsMybatisTest() {
@@ -73,7 +77,7 @@ public class swaggerDemoController extends BaseController {
             try {
                 return menuService.findAllBySql();
             } catch (Exception e) {
-              throwException(e);
+                throwException(e);
             }
             return null;
         };
@@ -91,6 +95,20 @@ public class swaggerDemoController extends BaseController {
             }
             return null;
         };
-        return handleRequest(businessHandler); 
+        return handleRequest(businessHandler);
+    }
+
+    @ApiOperation(value = "获取默认数据源数据Mybatis Sql", notes = "获取默认数据源数据Mybatis Sql")
+    @RequestMapping(value = "/firstMenuMybatisSql", method = RequestMethod.GET)
+    public JsonResp defaultDsMybatisSql() {
+        Supplier<Page<Map<String, Object>>> businessHandler = () -> {
+            try {
+                return menuService.selectListPage(1, 2);
+            } catch (Exception e) {
+                throwException(e);
+            }
+            return null;
+        };
+        return handleRequest(businessHandler);
     }
 }
