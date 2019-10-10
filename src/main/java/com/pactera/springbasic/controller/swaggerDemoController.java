@@ -41,12 +41,27 @@ public class swaggerDemoController extends BaseController {
         };
         return handleRequest(businessHandler);
     }
-
+    @ApiOperation(value = "获取默认数据源数据MybatisPlus", notes = "获取默认数据源数据MybatisPlus")
+    @RequestMapping(value = "/firstSysMenuMybatis", method = RequestMethod.GET)
+    public JsonResp defaultDsMyBatisTest() {
+        Supplier<Iterable<SysMenu>> businessHandler = () -> {
+            return menuService.findAllByMybatis();
+        };
+        return handleRequest(businessHandler);
+    }
     @ApiOperation(value = "获取数据源ds1数据", notes = "获取数据源ds1数据")
     @RequestMapping(value = "/ds1SysMenu", method = RequestMethod.GET)
     public JsonResp ds1DsTest() {
         Supplier<Iterable<SysMenu>> businessHandler = () -> {
             return menuService.findAll2();
+        };
+        return handleRequest(businessHandler);
+    }
+    @ApiOperation(value = "获取数据源ds1数据Mysbatis", notes = "获取数据源ds1数据Mybatis")
+    @RequestMapping(value = "/ds1SysMenuMybatis", method = RequestMethod.GET)
+    public JsonResp ds1DsMybatisTest() {
+        Supplier<Iterable<SysMenu>> businessHandler = () -> {
+            return menuService.findAllByMybatis2();
         };
         return handleRequest(businessHandler);
     }
