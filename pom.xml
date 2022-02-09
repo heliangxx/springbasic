@@ -23,7 +23,7 @@
 		<httpclient.version>4.5.8</httpclient.version>
 		<poi.version>4.1.0</poi.version>
 		<jwt.version>3.8.1</jwt.version>
-		<shiro.version>1.4.1</shiro.version>
+		<shiro.version>1.7.1</shiro.version>
 	</properties>
 
 	<dependencies>
